@@ -27,7 +27,7 @@ class ConfigForm extends Form
 
         // 授权激活
         if ($request->has('publish-video-proLicenseKey') && Cache::store('file')->get('publish-video-proLicenseKey') != $data['publish-video-proLicenseKey']) {
-            $result = $plugin->registerPlugin('publish-video', $data['publish-videoLicenseKey']);
+            $result = $plugin->registerPlugin('publish-video-pro', $data['publish-video-proLicenseKey']);
             if ($result) {
                 $message .= '；授权激活成功';
             } else {
@@ -35,7 +35,7 @@ class ConfigForm extends Form
             }
         }
 
-        unset($data['publish-videoLicenseKey']);
+        unset($data['publish-video-proLicenseKey']);
 
         foreach ($data as $key => $value) {
             if ($request->hasFile($key)) {
