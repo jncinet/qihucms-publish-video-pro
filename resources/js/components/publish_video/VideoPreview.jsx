@@ -143,11 +143,10 @@ class VideoPreview extends React.PureComponent {
                             this.bottomLeftBtn()
                         }
                         {
-                            this.props.precessType !== "yj"
-                                ? <BottomBtn callback={() => this.props.selectFile()}
-                                             reset={this.props.videoPreviewUrl.length > 0}/>
-                                : <BottomIco className="icon-yinfu1 font-size-20"
-                                             callback={() => this.props.selectBackgroundAudio()}>音乐</BottomIco>
+                            this.props.precessType !== "yj" && (
+                                <BottomBtn callback={() => this.props.selectFile()}
+                                           reset={this.props.videoPreviewUrl.length > 0}/>
+                            )
                         }
                         <BottomIco className="icon-zhifeiji"
                                    callback={() => this.props.redirectPublish()}>发布</BottomIco>
