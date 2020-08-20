@@ -15,7 +15,7 @@ class VideoPreview extends React.PureComponent {
         this.state = {
             videoPaused: false,
             videoPlaybackRate: null,
-            videoMuted: false,
+            videoMuted: true,
         };
     }
 
@@ -104,7 +104,7 @@ class VideoPreview extends React.PureComponent {
                        className="d-block bg-black vw-100 vh-100" webkit-playsinline="true"
                        x-webkit-airplay="allow" playsInline x5-video-player-type="h5-page"
                        x5-video-orientation="portrait" x5-video-player-fullscreen="true"
-                       width="100%" height="100%" autoPlay ref={this.videoMount}>
+                       width="100%" height="100%" autoPlay ref={this.videoMount} muted={this.state.videoMuted}>
                     暂不支持视频预览
                 </video>
                 <div className="position-absolute text-white-50 absolute-right-center">
@@ -150,7 +150,7 @@ class VideoPreview extends React.PureComponent {
                                              callback={() => this.props.selectBackgroundAudio()}>音乐</BottomIco>
                         }
                         <BottomIco className="icon-zhifeiji"
-                                   callback={() => this.props.redirectPusblish()}>发布</BottomIco>
+                                   callback={() => this.props.redirectPublish()}>发布</BottomIco>
                     </div>
                 </div>
             </div>

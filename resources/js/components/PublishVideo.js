@@ -160,17 +160,18 @@ class PublishVideo extends React.PureComponent {
         // 200ms请求查一次数据是否已经存储，最多300次（1分钟）内未查到视为失败
         let count = 0;
         let jsonData = null;
+        this.setState({loading: true});
         const interval = setInterval(() => {
             count++;
             jsonData = sessionStorage.getItem("uploadResponse");
             if (jsonData) {
                 jsonData = JSON.parse(jsonData);
-                this.setState(prevState => ({
+                this.setState({
                     videoPreviewUrl: jsonData.url,
                     formVideoValue: jsonData.src,
                     currentViewNumber: 1,
-                    precessType: prevState.precessType === 'yj' ? null : prevState.precessType
-                }));
+                    loading: false
+                });
                 sessionStorage.removeItem("uploadResponse");
                 if (this.state.videoSourceUrl.length > 0 && (this.state.precessType === "tk" || this.state.precessType === "hp")) {
                     // 请求执行合拍或同款
@@ -194,6 +195,7 @@ class PublishVideo extends React.PureComponent {
             }
             if (count > 300) {
                 clearInterval(interval);
+                this.setState({ loading: false });
             }
         }, 200);
     }
@@ -205,6 +207,7 @@ class PublishVideo extends React.PureComponent {
         // 200ms请求查一次数据是否已经存储，最多300次（1分钟）内未查到视为失败
         let count = 0;
         let jsonData = null;
+        this.setState({loading: true});
         const interval = setInterval(() => {
             count++;
             jsonData = sessionStorage.getItem("uploadResponse");
@@ -214,14 +217,15 @@ class PublishVideo extends React.PureComponent {
                 if (this.state.isCustomCover === false) {
                     let images = this.state.images;
                     images = [...images, jsonData];
-                    this.setState({images, uploadPhotoModal: false, imageItemsModal: true});
+                    this.setState({images, uploadPhotoModal: false, imageItemsModal: true, loading: false});
                 } else {
-                    this.setState({cover: jsonData, uploadPhotoModal: false});
+                    this.setState({cover: jsonData, uploadPhotoModal: false, loading: false});
                 }
                 sessionStorage.removeItem("uploadResponse");
             }
             if (count > 300) {
                 clearInterval(interval);
+                this.setState({ loading: false });
             }
         }, 200);
     }
@@ -484,7 +488,7 @@ class PublishVideo extends React.PureComponent {
                                      selectFile={this.handleSelectFile}
                                      selectBackgroundAudio={this.handleSelectBackgroundAudioPopup}
                                      selectVideo={this.handleSelectVideo}
-                                     redirectPusblish={this.handleMakeVideoFrame}
+                                     redirectPublish={this.handleMakeVideoFrame}
                 />;
             case 2:
                 // 发布页
@@ -504,7 +508,6 @@ class PublishVideo extends React.PureComponent {
     }
 
     render() {
-        console.log(this.state);
         return (
             <>
                 <GoBack goBack={this.handleGoBack}/>

@@ -3,7 +3,6 @@
 namespace Qihucms\PublishVideoPro\Controllers\Wap;
 
 use App\Http\Controllers\Controller;
-use App\Plugins\PublishVideoProPlugin;
 use Illuminate\Support\Facades\Cache;
 use Qihucms\PublishVideoPro\Models\BackgroundAudio;
 use Illuminate\Http\Request;
@@ -22,7 +21,11 @@ class ProcessController extends Controller
      */
     public function index(Request $request)
     {
-        $publish = new PublishVideoProPlugin();
+        $pluginClassName = 'App\\Plugins\\PublishVideoProPlugin';
+        if (!class_exists($pluginClassName)) {
+            throw new \Exception('扩展不存在');
+        }
+        $publish = new $pluginClassName();
         $type = $request->input('type');
         switch ($type) {
             // 背景音乐
