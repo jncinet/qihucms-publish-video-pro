@@ -1,0 +1,33 @@
+{
+  "name": "jncinet/qihucms-publish-video-pro",
+  "description": "qihucms video process.",
+  "keywords": [
+    "laravel",
+    "qihucms",
+    "ffmpeg"
+  ],
+  "homepage": "https://www.qihucms.com",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "zhangye",
+      "email": "y@qilephp.com"
+    }
+  ],
+  "require": {
+    "jncinet/laravel-video-ffmpeg": "^1.0",
+    "jncinet/tencent_lbs":  "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Qihucms\\PublishVideoPro\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Qihucms\\PublishVideoPro\\PublishVideoProServiceProvider"
+      ]
+    }
+  }
+}
