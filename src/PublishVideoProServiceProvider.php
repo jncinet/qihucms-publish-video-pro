@@ -42,7 +42,7 @@ class PublishVideoProServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__ . '/../resources/js' => resource_path('js'),
-            __DIR__ . '/../resources/asset' => public_path('vendor/publish-video'),
-        ], 'publish-video');
+            __DIR__ . '/../resources/asset' => public_path('vendor/publish-video-pro'),
+        ], 'publishVideoPro');
     }
 }
