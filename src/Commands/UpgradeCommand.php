@@ -13,7 +13,7 @@ class UpgradeCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'publishVideoPro:upgrade';
+    protected $signature = 'publish-video-pro:upgrade';
 
     /**
      * The console command description.

@@ -15,7 +15,7 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'publishVideoPro:install';
+    protected $signature = 'publish-video-pro:install';
 
     /**
      * The console command description.

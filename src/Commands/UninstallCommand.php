@@ -16,7 +16,7 @@ class UninstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'publishVideoPro:uninstall';
+    protected $signature = 'publish-video-pro:uninstall';
 
     /**
      * The console command description.
