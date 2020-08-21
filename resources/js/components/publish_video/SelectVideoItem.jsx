@@ -27,7 +27,7 @@ class SelectVideoItem extends React.Component {
                         this.state.videoStatus ? (
                             <video src={this.props.src} poster={this.props.poster} className="d-block w-100"
                                    webkit-playsinline="true" x-webkit-airplay="allow" width="100%" playsInline
-                                   x5-video-player-type="h5-page" x5-video-orientation="portrait" muted={true}
+                                   x5-video-player-type="h5-page" x5-video-orientation="portrait"
                                    x5-video-player-fullscreen="true" autoPlay={true} onEnded={this.handlePlayEnded}>
                                 暂不支持视频预览
                             </video>
