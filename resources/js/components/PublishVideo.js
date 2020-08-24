@@ -196,7 +196,7 @@ class PublishVideo extends React.PureComponent {
             }
             if (count > 300) {
                 clearInterval(interval);
-                this.setState({ loading: false });
+                this.setState({loading: false});
             }
         }, 200);
     }
@@ -227,7 +227,7 @@ class PublishVideo extends React.PureComponent {
             }
             if (count > 300) {
                 clearInterval(interval);
-                this.setState({ loading: false });
+                this.setState({loading: false});
             }
         }, 200);
     }
@@ -333,7 +333,10 @@ class PublishVideo extends React.PureComponent {
 
     // 显示选择视频上传窗口
     handleSelectFile() {
-        this.setState({uploadVideoModal: true, precessType: null});
+        this.setState(prevState => ({
+            uploadVideoModal: true,
+            precessType: prevState.precessType === 'yj' ? null : prevState.precessType
+        }));
     }
 
     closeFilePopup() {
