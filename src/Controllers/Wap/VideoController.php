@@ -4,6 +4,7 @@ namespace Qihucms\PublishVideoPro\Controllers\Wap;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Qihucms\PublishVideoPro\Jobs\ProcessVideo;
 use Qihucms\PublishVideoPro\Requests\ShortVideoRequest;
 use App\Models\ShortVideo;
 use App\Services\WechatService;
@@ -38,6 +39,7 @@ class VideoController extends Controller
             $data['exif'] = app('videoFFMpeg')->avInfo(Storage::url($data['src']));
             $result = ShortVideo::create($data);
             if ($result) {
+                ProcessVideo::dispatch($result)->delay(now()->addSeconds(10));
                 return $this->successJson('发布成功', $result);
             }
         }

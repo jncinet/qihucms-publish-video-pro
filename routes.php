@@ -25,7 +25,7 @@ Route::group([
 
 // 手机端
 Route::group([
-    // 公会页面URL前缀
+    // 页面URL前缀
     'prefix' => 'publish-video-pro',
     // 控制器命名空间
     'namespace' => 'Qihucms\PublishVideoPro\Controllers\Wap',
